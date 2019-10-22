@@ -12,6 +12,11 @@ public class PlayerMotor : MonoBehaviour {
 
     private void Start() {
         rb = GetComponent<Rigidbody>();
+        rb.useGravity = true;
+    }
+
+    public void Jump() {
+        rb.AddForce(new Vector3(0, 10, 0), ForceMode.Impulse);
     }
 
     public void Move(Vector3 velocity) {

@@ -11,9 +11,11 @@ public class PlayerShoot : NetworkBehaviour
     public Camera cam;
     public PlayerWeapon weapon;
     public PlayerController controller;
+    private AudioSource audio;
 
     void Start(){
         controller = GetComponent<PlayerController>();
+        audio = GetComponent<AudioSource>();
         weapon.damage = 10;
     }
 
@@ -35,6 +37,7 @@ public class PlayerShoot : NetworkBehaviour
     }
     [Client]
     void Shoot() {
+        audio.Play();
         RaycastHit hit;
 
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, weapon.range, mask )) {

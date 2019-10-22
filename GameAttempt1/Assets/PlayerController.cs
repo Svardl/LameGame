@@ -34,6 +34,12 @@ public class PlayerController : MonoBehaviour
         float xRot = Input.GetAxisRaw("Mouse Y");
         Vector3 cameraRotation = new Vector3(xRot, 0f, 0f) * sensitivity;
         motor.CameraRotate = cameraRotation;
+
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            motor.Jump();
+        }
+
+
     }
 
 }
