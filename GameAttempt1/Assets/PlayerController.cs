@@ -5,9 +5,13 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerMotor))]
 public class PlayerController : MonoBehaviour
 {
+   
    public float speed = 5f;
    public PlayerMotor motor;
    public float sensitivity = 5f;
+
+
+    public float Speed { get { return speed; } set { speed = value; } }
     void Start() {
         motor = GetComponent<PlayerMotor>();
         
@@ -26,13 +30,10 @@ public class PlayerController : MonoBehaviour
         float yRot = Input.GetAxisRaw("Mouse X");
         Vector3 rotation = new Vector3(0f, yRot, 0f)*sensitivity;
         motor.Rotate(rotation);
-
         
         float xRot = Input.GetAxisRaw("Mouse Y");
         Vector3 cameraRotation = new Vector3(xRot, 0f, 0f) * sensitivity;
         motor.CameraRotate = cameraRotation;
-        
-
     }
 
 }

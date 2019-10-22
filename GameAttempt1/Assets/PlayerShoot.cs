@@ -10,12 +10,11 @@ public class PlayerShoot : NetworkBehaviour
 
     public Camera cam;
     public PlayerWeapon weapon;
-
- 
+    public PlayerController controller;
 
     void Start(){
-
-        
+        controller = GetComponent<PlayerController>();
+        weapon.damage = 10;
     }
 
     void Update()
@@ -23,6 +22,16 @@ public class PlayerShoot : NetworkBehaviour
         if (Input.GetButtonDown("Fire1")){
             Shoot();
         }
+
+        if (Input.GetButton("Fire2"))
+        {
+            controller.Speed = 15;
+        }
+        else {
+            controller.Speed = 5;
+        }
+       
+
     }
     [Client]
     void Shoot() {
@@ -40,6 +49,7 @@ public class PlayerShoot : NetworkBehaviour
         Debug.Log(id + " has been shot");
 
         PlayerManager player = GameManager.GetPlayer(id);
+        player.TakeDamage(damage);
 
 
 

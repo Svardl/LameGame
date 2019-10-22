@@ -5,15 +5,25 @@ using UnityEngine.Networking;
 
 public class PlayerManager : NetworkBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    string MyID;
+    const int maxHealth = 100;
+
+    [SyncVar]
+    private int currentHealth;
+
+
+    public void TakeDamage(int damage) {
+        currentHealth -= damage;
+        Debug.Log(MyID+" took "+ damage+" damage and now has " +currentHealth +" health" );
+    }
+    public void ResetPlayer() {
+        currentHealth = maxHealth;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        MyID = transform.name;
+        currentHealth = maxHealth;
     }
+
 }

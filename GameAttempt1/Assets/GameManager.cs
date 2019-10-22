@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-
-
     private static Dictionary<string, PlayerManager> players = new Dictionary<string, PlayerManager>();
 
     public static void RegisterPlayer(string netId, PlayerManager player) {
