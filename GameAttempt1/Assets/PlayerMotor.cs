@@ -13,6 +13,9 @@ public class PlayerMotor : MonoBehaviour {
     private void Start() {
         rb = GetComponent<Rigidbody>();
         rb.useGravity = true;
+        Physics.gravity = new Vector3(0, -20, 0);
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void Jump() {

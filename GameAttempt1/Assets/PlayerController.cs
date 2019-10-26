@@ -6,14 +6,15 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
    
-   public float speed = 5f;
+   public float speed = 8f;
    public PlayerMotor motor;
-   public float sensitivity = 5f;
+   public float sensitivity = 1.5f;
 
 
     public float Speed { get { return speed; } set { speed = value; } }
     void Start() {
         motor = GetComponent<PlayerMotor>();
+        sensitivity = 1.5f;
         
     }
     void Update() {
