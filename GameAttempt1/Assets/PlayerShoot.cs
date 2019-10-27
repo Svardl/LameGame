@@ -12,6 +12,7 @@ public class PlayerShoot : NetworkBehaviour
     public PlayerWeapon weapon;
     public PlayerController controller;
     private AudioSource audio;
+    public ParticleSystem muzzleflash;
 
     void Start(){
         controller = GetComponent<PlayerController>();
@@ -38,6 +39,8 @@ public class PlayerShoot : NetworkBehaviour
     [Client]
     void Shoot() {
         audio.Play();
+        WeaponGraphics currentGraphics = GetComponent<WeaponGraphics>();
+        muzzleflash.Play();
         RaycastHit hit;
 
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, weapon.range, mask )) {
